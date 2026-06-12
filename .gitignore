@@ -1,0 +1,12 @@
+# Ignorar todo
+*
+
+# Permitir .gitignore
+!.gitignore
+
+# Permitir carpeta src y todo su contenido
+!src/
+!src/**
+
+# (Opcional) permitir README
+#!README.md
