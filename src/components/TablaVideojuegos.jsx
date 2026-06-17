@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./TablaVideojuegos.css";
 
-export function TablaVideojuegos({ juegos }) {
+export function TablaVideojuegos({ juegos, onEliminar }) {
+    const navigate = useNavigate();
+
     return (
         <div className="contenedor-tabla">
             <table className="tabla-videojuegos">
@@ -14,9 +17,9 @@ export function TablaVideojuegos({ juegos }) {
                         <th>Precio</th>
                         <th>Estado</th>
                         <th>Descarga</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     {juegos.map((juego) => (
                         <tr key={juego.id}>
@@ -24,26 +27,32 @@ export function TablaVideojuegos({ juegos }) {
                             <td data-label="Género">{juego.genero}</td>
                             <td data-label="Plataforma">{juego.plataforma}</td>
                             <td data-label="Lanzamiento">{juego.lanzamiento}</td>
-                            <td data-label="Precio">
-                                ${juego.precio.toFixed(2)}
-                            </td>
-
+                            <td data-label="Precio">${juego.precio.toFixed(2)}</td>
                             <td data-label="Estado">
-                                <span
-                                    className={`badge ${juego.disponible ? "disponible" : "agotado"
-                                        }`}
-                                >
+                                <span className={`badge ${juego.disponible ? "disponible" : "agotado"}`}>
                                     {juego.disponible ? "Disponible" : "Agotado"}
                                 </span>
                             </td>
-
                             <td data-label="Descarga">
                                 <div className="celda-progreso">
-                                    <progress
-                                        value={juego.progreso}
-                                        max="100"
-                                    ></progress>
+                                    <progress value={juego.progreso} max="100"></progress>
                                     <span>{juego.progreso}%</span>
+                                </div>
+                            </td>
+                            <td data-label="Acciones">
+                                <div className="celda-acciones">
+                                    <button 
+                                        className="btn-edit" 
+                                        onClick={() => navigate("/editar", { state: { juego } })}
+                                    >
+                                        Editar
+                                    </button>
+                                    <button 
+                                        className="btn-delete" 
+                                        onClick={() => onEliminar(juego.id)}
+                                    >
+                                        Eliminar
+                                    </button>
                                 </div>
                             </td>
                         </tr>
