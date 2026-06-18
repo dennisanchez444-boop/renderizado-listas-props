@@ -1,143 +1,206 @@
-.contenedor-tabla {
-    width: 100%;
-    overflow-x: auto;
-    background: #111827;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
-    border: 1px solid #1f2937;
+:root {
+    --bg: #0b1220;
+    --card: #111827;
+    --card-hover: #1f2a3a;
+
+    --text: #f9fafb;
+    --text-muted: #9ca3af;
+
+    --border: #243244;
+
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+
+    --shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
 }
 
+/* CONTENEDOR GENERAL */
+.contenedor-tabla {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+/* TABLA */
 .tabla-videojuegos {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    text-align: left;
-}
-
-.tabla-videojuegos th {
-    background-color: #1f2937;
-    color: #9ca3af;
-    padding: 16px 20px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 2px solid #374151;
-}
-
-.tabla-videojuegos td {
-    padding: 16px 20px;
-    border-bottom: 1px solid #1f2937;
-    color: #f3f4f6;
     font-size: 0.95rem;
 }
 
+/* HEADER */
+.tabla-videojuegos thead {
+    background: #0a0f1a;
+}
+
+.tabla-videojuegos th {
+    color: var(--text);
+    text-align: left;
+    padding: 18px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* CELDAS */
+.tabla-videojuegos td {
+    padding: 16px 18px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+/* FILAS */
 .tabla-videojuegos tbody tr {
-    transition: background-color 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .tabla-videojuegos tbody tr:hover {
-    background-color: #1f2937;
+    background: var(--card-hover);
+    transform: scale(1.01);
 }
 
+/* BADGES */
 .badge {
+    display: inline-block;
     padding: 6px 12px;
-    border-radius: 9999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-.badge.disponible {
-    background-color: rgba(22, 101, 52, 0.2);
-    color: #4ade80;
-    border: 1px solid rgba(74, 222, 128, 0.4);
+.disponible {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--green);
 }
 
-.badge.agotado {
-    background-color: rgba(153, 27, 27, 0.2);
-    color: #f87171;
-    border: 1px solid rgba(248, 113, 113, 0.4);
+.agotado {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--red);
 }
 
+/* PROGRESO */
 .celda-progreso {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 progress {
-    width: 100px;
-    height: 6px;
-    border-radius: 9999px;
+    width: 120px;
+    height: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    background-color: #374151;
-    border: none;
 }
 
 progress::-webkit-progress-bar {
-    background-color: #374151;
-    border-radius: 9999px;
+    background: #1f2937;
 }
 
 progress::-webkit-progress-value {
-    background: linear-gradient(to right, #818cf8, #6366f1);
-    border-radius: 9999px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
 }
 
-progress::-moz-progress-bar {
-    background: linear-gradient(to right, #818cf8, #6366f1);
-    border-radius: 9999px;
-}
-
-.celda-progreso span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #9ca3af;
-}
-
+/* BOTONES */
 .celda-acciones {
     display: flex;
     gap: 10px;
 }
 
-.btn-edit, .btn-delete {
-    padding: 8px 16px;
+.btn-edit,
+.btn-delete {
     border: none;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.2s ease;
+    font-size: 0.85rem;
 }
 
 .btn-edit {
-    background-color: rgba(37, 99, 235, 0.15);
-    color: #60a5fa;
-    border: 1px solid rgba(96, 165, 250, 0.3);
-}
-
-.btn-edit:hover {
-    background-color: #2563eb;
-    color: #ffffff;
-    border-color: #2563eb;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    background: var(--blue);
+    color: white;
 }
 
 .btn-delete {
-    background-color: rgba(220, 38, 38, 0.15);
-    color: #f87171;
-    border: 1px solid rgba(248, 113, 113, 0.3);
+    background: var(--red);
+    color: white;
 }
 
+.btn-edit:hover,
 .btn-delete:hover {
-    background-color: #dc2626;
-    color: #ffffff;
-    border-color: #dc2626;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    transform: translateY(-2px);
+    filter: brightness(1.15);
 }
 
-.btn-edit:active, .btn-delete:active {
-    transform: scale(0.96);
+/* SINOPSIS */
+.sinopsis-col {
+    max-width: 320px;
+    color: #e5e7eb;
+    line-height: 1.5;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+/* HOVER PREMIUM */
+.tabla-videojuegos tbody tr:hover td {
+    color: var(--text);
+}
+
+/* RESPONSIVE PRO (CARDS STYLE) */
+@media (max-width: 900px) {
+
+    .tabla-videojuegos,
+    .tabla-videojuegos thead,
+    .tabla-videojuegos tbody,
+    .tabla-videojuegos tr,
+    .tabla-videojuegos td {
+        display: block;
+        width: 100%;
+    }
+
+    .tabla-videojuegos thead {
+        display: none;
+    }
+
+    .tabla-videojuegos tr {
+        margin: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 14px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .tabla-videojuegos td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border: none;
+    }
+
+    .tabla-videojuegos td::before {
+        content: attr(data-label);
+        color: var(--text);
+        font-weight: 600;
+    }
+
+    .celda-acciones {
+        justify-content: flex-end;
+    }
+
+    .sinopsis-col {
+        white-space: normal;
+    }
 }

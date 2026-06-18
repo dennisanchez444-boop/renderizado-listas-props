@@ -50,7 +50,8 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--heading);
   font-weight: 700;
   color: var(--text-h);
@@ -96,4 +97,23 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+
+  background: radial-gradient(circle at top,
+      #111827,
+      #0b1220);
+
+  color: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
 }
