@@ -4,7 +4,7 @@ import "./TablaVideojuegos.css";
 
 export function TablaVideojuegos({ juegos, onEliminar }) {
     const navigate = useNavigate();
-
+    console.log(juegos);
     return (
         <div className="contenedor-tabla">
             <table className="tabla-videojuegos">
@@ -52,8 +52,8 @@ export function TablaVideojuegos({ juegos, onEliminar }) {
                             <td data-label="Estado">
                                 <span
                                     className={`badge ${juego.disponible
-                                            ? "disponible"
-                                            : "agotado"
+                                        ? "disponible"
+                                        : "agotado"
                                         }`}
                                 >
                                     {juego.disponible

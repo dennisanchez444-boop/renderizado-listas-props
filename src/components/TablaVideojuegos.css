@@ -20,7 +20,8 @@
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 22px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     box-shadow: var(--shadow);
     margin: 30px auto;
     max-width: 1200px;
